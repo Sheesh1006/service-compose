@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: https://github.com/Sheesh1006/service-backend.git#main
+      dockerfile: Dockerfile
+    ports:
+       - "50052:50052"
+      #args:
+       #   GIT_ACCESS_TOKEN: ${GIT_ACCESS_TOKEN}
+    depends_on:
+        - frontend
+    restart: always
+
+
+  frontend:
+    build:
+      context: https://github.com/Sheesh1006/service-frontend.git#main
+      dockerfile: Dockerfile
+      #args:
+          #GIT_ACCESS_TOKEN: ${GIT_ACCESS_TOKEN}
+    ports:
+        - "8000:8000"
+    restart: always
+    
+ 
+  chatgpt:
+    build:
+      context: https://github.com/Sheesh1006/service-chatgpt.git#main
+      dockerfile: Dockerfile
+      #args:
+         #GIT_ACCESS_TOKEN: ${GIT_ACCESS_TOKEN}
+    ports:
+        - "50051:50051"
+    depends_on:
+       - backend
+    restart: always
+
