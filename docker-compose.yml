@@ -7,8 +7,6 @@ services:
       dockerfile: Dockerfile
     ports:
        - "50052:50052"
-      #args:
-       #   GIT_ACCESS_TOKEN: ${GIT_ACCESS_TOKEN}
     depends_on:
         - chatgpt
     restart: always
@@ -18,8 +16,6 @@ services:
     build:
       context: https://github.com/Sheesh1006/service-frontend.git#main
       dockerfile: Dockerfile
-      #args:
-          #GIT_ACCESS_TOKEN: ${GIT_ACCESS_TOKEN}
     ports:
         - "8000:8000"
     depends_on:
@@ -31,11 +27,7 @@ services:
     build:
       context: https://github.com/Sheesh1006/service-chatgpt.git#main
       dockerfile: Dockerfile
-      #args:
-         #GIT_ACCESS_TOKEN: ${GIT_ACCESS_TOKEN}
     ports:
         - "50051:50051"
-    #depends_on:
-     #  - backend
     restart: always
 
